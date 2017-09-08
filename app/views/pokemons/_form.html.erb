@@ -1,27 +1,38 @@
-<%= form_for(pokemon) do |f| %>
-  <% if pokemon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pokemon.errors.count, "error") %> prohibited this pokemon from being saved:</h2>
+<div class="well bs-component">
+<%= form_for(pokemon, html: {class: "form-horizontal"}) do |f| %>
+<% if pokemon.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(pokemon.errors.count, "error") %>
+    prohibited this pokemon from being saved:</h2>
 
-      <ul>
-      <% pokemon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <ul>
+    <% pokemon.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+<div class="form-group">
+  <%= f.label :name, class:"col-lg-2 control-label" %>
+  <div class="col-lg-10">
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, class: "col-lg-2 control-label" %>
+  <div class="col-lg-10">
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-10 col-lg-offset-2">
+    <%= f.submit class:"btn btn-primary" %>
+    <%= link_to 'Back', pokemons_path, class:"btn btn-info" %>
+    <%= link_to('Show', @pokemon, class: "btn btn-success") if params[:action] == 'edit' %>
+  </div>
+</div>
+<% end %>
+</div>

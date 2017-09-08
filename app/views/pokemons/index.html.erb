@@ -1,18 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-10 col-xs-10">
+    <h1>Pokemons</h1>
+  </div>
+  <div class="col-lg-2 col-xs-2">
+    <%= link_to '<span style="font-size:3em" class="glyphicon glyphicon-plus-sign"></span>'.html_safe, new_pokemon_path %>
+  </div>
+</div>
+<div class="well bs-component">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<h1>Pokemons</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pokemons.each do |pokemon| %>
+    <tbody>
+      <% @pokemons.each do |pokemon| %>
       <tr>
         <td><%= pokemon.name %></td>
         <td><%= pokemon.description %></td>
@@ -20,10 +25,7 @@
         <td><%= link_to 'Edit', edit_pokemon_path(pokemon) %></td>
         <td><%= link_to 'Destroy', pokemon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Pokemon', new_pokemon_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
