@@ -1,6 +1,6 @@
 class PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:dashboard]
+  load_and_authorize_resource except: [:dashboard]
 
   # GET /pokemons
   # GET /pokemons.json
@@ -74,6 +74,6 @@ class PokemonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pokemon_params
-      params.require(:pokemon).permit(:name, :description)
+      params.require(:pokemon).permit(:name, :description, :photo, :photo_cache, :remote_photo_url)
     end
 end

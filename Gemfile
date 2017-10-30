@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem 'cancancan', '~> 2.0'
 gem "devise", git: 'https://github.com/plataformatec/devise.git'
+gem 'carrierwave'
+gem "mini_magick"
 
 
 # Use Capistrano for deployment
